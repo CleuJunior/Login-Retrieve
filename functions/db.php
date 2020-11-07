@@ -1,7 +1,11 @@
 <?php
 
-    $con = mysqli_connect('127.0.0.1', 'root', 'root', 'login_db');
+    $con = mysqli_connect('localhost', 'root', 'root', 'login_db', 3306);
 
+    function row_count($reuslt){
+
+        return mysqli_num_rows($reuslt);
+    }
 
     function escape($string){
         global $con;
@@ -19,10 +23,10 @@
         global $con;
 
         if(!$result){
-            die("QUERY FAILED");
+            die("QUERY FAILED " . mysqli_error($con));
         }
 
-        
+
     }
 
     function fetch_array($result){
